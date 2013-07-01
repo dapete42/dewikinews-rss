@@ -1,0 +1,3 @@
+RewriteEngine On
+# Define 'kategorie' as alias for cat.php for nice URIs
+RewriteRule ^kategorie$ /dewikinews-rss/cat.php

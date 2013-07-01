@@ -1,0 +1,56 @@
+rss, channel, item, title, description, link, pubDate
+{
+  display: block;
+}
+
+image, language, managingEditor, webMaster, docs, copyright,
+lastBuildDate, rating, day, hour,
+skipDays, skipHours, textinput, name, guid
+{
+  display: none;
+}
+
+channel, item {
+  border: 0.5mm solid black;
+  padding: 1ex;
+  margin: 1ex;
+}
+
+channel>title {
+  font-family: sans-serif;
+  font-weight: bold;
+  text-align: center;
+  font-size: 140%;
+  margin: 1ex;
+}
+
+channel>description {
+  margin: 1ex;
+  text-align: center;
+  font-style: italic;
+  font-family: serif;
+  font-size: 120%;
+}
+
+item>title {
+  margin: 1ex;
+  font-family: sans-serif;
+  font-size: 120%;
+}
+
+link {
+  margin: 1ex;
+  white-space: nowrap;
+}
+
+link:before {
+  content: 'Link: ';
+}
+
+pubDate {
+  display: none;
+}
+
+item>description {
+  text-align: justify;
+}

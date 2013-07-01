@@ -9,21 +9,21 @@ have to be taken from the generated `replica.my.cnf` file.
 Database schema
 ---------------
 
-  CREATE TABLE IF NOT EXISTS `articles` (
-    `title` varchar(255) CHARACTER SET utf8 NOT NULL DEFAULT '',
-    `text` mediumtext CHARACTER SET utf8 NOT NULL,
-    `id` int(8) unsigned NOT NULL DEFAULT '0',
-    `revid` int(8) unsigned NOT NULL DEFAULT '0',
-    `touched` varchar(14) CHARACTER SET ascii DEFAULT '19700101000000',
-    `published` varchar(14) CHARACTER SET ascii DEFAULT '19700101000000',
-    PRIMARY KEY (`id`),
-    KEY `touched` (`touched`),
-    KEY `published` (`published`)
-  ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-  
-  CREATE TABLE IF NOT EXISTS `categories` (
-    `category` varchar(255) CHARACTER SET utf8 NOT NULL DEFAULT '',
-    `id` int(8) unsigned NOT NULL DEFAULT '0',
-    PRIMARY KEY (`category`,`id`),
-    KEY `id` (`id`)
-  ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+	CREATE TABLE IF NOT EXISTS `articles` (
+		`title` varchar(255) CHARACTER SET utf8 NOT NULL DEFAULT '',
+		`text` mediumtext CHARACTER SET utf8 NOT NULL,
+		`id` int(8) unsigned NOT NULL DEFAULT '0',
+		`revid` int(8) unsigned NOT NULL DEFAULT '0',
+		`touched` varchar(14) CHARACTER SET ascii DEFAULT '19700101000000',
+		`published` varchar(14) CHARACTER SET ascii DEFAULT '19700101000000',
+		PRIMARY KEY (`id`),
+		KEY `touched` (`touched`),
+		KEY `published` (`published`)
+	) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+	
+	CREATE TABLE IF NOT EXISTS `categories` (
+		`category` varchar(255) CHARACTER SET utf8 NOT NULL DEFAULT '',
+		`id` int(8) unsigned NOT NULL DEFAULT '0',
+		PRIMARY KEY (`category`,`id`),
+		KEY `id` (`id`)
+	) ENGINE=InnoDB DEFAULT CHARSET=utf8;

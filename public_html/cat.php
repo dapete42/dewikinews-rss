@@ -9,13 +9,13 @@
  
 
 // Initialization (DB etc.)
-include ('init.php');
+include ('../php/init.php');
 
 // Shared functions
-include ('cat-functions.php');
+include ('../php/cat-functions.php');
 
 // Output funcitons
-include ('cat-output.php');
+include ('../php/cat-output.php');
 
 // Get parameter
 $cat = get_cat();

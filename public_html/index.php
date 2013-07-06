@@ -11,18 +11,18 @@
 */
 
 // Provides initialization and some db config variables
-require('init.php');
+require('../php/init.php');
 
-require('classes/ArticleDatabase.php');
-require('classes/DEWikinewsConverter.php');
-require('classes/DEWikinewsTeXConverter.php');
-require('classes/HTMLOutput.php');
-require('classes/MySQLDatabase.php');
-require('classes/NoConverter.php');
-require('classes/RSSOutput.php');
-require('classes/TeXOutput.php');
-require('classes/TextOutput.php');
-require('classes/WMLOutput.php');
+require('../php/classes/ArticleDatabase.php');
+require('../php/classes/DEWikinewsConverter.php');
+require('../php/classes/DEWikinewsTeXConverter.php');
+require('../php/classes/HTMLOutput.php');
+require('../php/classes/MySQLDatabase.php');
+require('../php/classes/NoConverter.php');
+require('../php/classes/RSSOutput.php');
+require('../php/classes/TeXOutput.php');
+require('../php/classes/TextOutput.php');
+require('../php/classes/WMLOutput.php');
 
 $count = @$_GET['count'];
 $cut = @$_GET['cut'];
@@ -94,7 +94,7 @@ $db = new MySQLDatabase($dbHost, $dbUsername, $dbPassword, $dbDatabase);
 $adb = new ArticleDatabase($db, '');
 
 if (!$db->connect()) {
-  die ("dewikinews.php: Can't connect to database.");
+  die ("Can't connect to database.");
 }
 
 $articles = $adb->loadArticles($count);

@@ -5,4 +5,4 @@
 #$ -e /data/project/dewikinews-rss/update.log
 #$ -l h_vmem=500M
 
-php /data/project/dewikinews-rss/public_html/dewikinews-update.php
+php /data/project/dewikinews-rss/php/dewikinews-update.php

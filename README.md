@@ -9,6 +9,9 @@ have to be taken from the generated `replica.my.cnf` file.
 Database schema
 ---------------
 
+This tool requires a MySQL/MariaDB database to store the most recent articles.
+This has to be created manually. The following definition can be used:
+
 	CREATE TABLE IF NOT EXISTS `articles` (
 		`title` varchar(255) CHARACTER SET utf8 NOT NULL DEFAULT '',
 		`text` mediumtext CHARACTER SET utf8 NOT NULL,
@@ -27,3 +30,5 @@ Database schema
 		PRIMARY KEY (`category`,`id`),
 		KEY `id` (`id`)
 	) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+The location is defined in `public_html/config.php`.

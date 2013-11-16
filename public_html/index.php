@@ -66,8 +66,8 @@ else {
 }
 
 if ($ssl) {
-  $baseurl = 'https://secure.wikimedia.org/wikinews/de/wiki/';
-  $infourl = 'https://secure.wikimedia.org/wikinews/de/wiki/Benutzer:Dapete/RSS';
+  $baseurl = 'https://de.wikinews.org/wiki/';
+  $infourl = 'https://de.wikinews.org/wiki/Benutzer:Dapete/RSS';
 }
 else {
   $baseurl = 'http://de.wikinews.org/wiki/';

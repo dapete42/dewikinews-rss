@@ -1,3 +1,6 @@
-RewriteEngine On
+# This project uses the new web service system, which does not use .htaccess.
+# Please see ../.lighttpd.conf for the actual redirect definition.
+
 # Define 'kategorie' as alias for cat.php for nice URIs
+RewriteEngine On
 RewriteRule ^kategorie$ /dewikinews-rss/cat.php

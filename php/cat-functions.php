@@ -11,6 +11,10 @@ function get_cat()
 {
   #@$cat = $_GET['cat'];
   $cat = urldecode($_SERVER['QUERY_STRING']);
+  // Compatibility with old call (with ?cat=CATEGORY instead just ?CATEGORY)
+  if (substr($cat,0,4) === 'cat=') {
+    $cat = substr($cat,4);
+  }
   return $cat;
 }
 

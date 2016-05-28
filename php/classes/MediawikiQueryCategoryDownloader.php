@@ -18,17 +18,19 @@ class MediawikiQueryCategoryDownloader extends Downloader {
 
   protected $urlDomain;
   protected $urlPath;
+  protected $useHttps;
 
-  public function __construct($domain = 'en.wikipedia.org', $path = 'w') {
+  public function __construct($domain = 'en.wikipedia.org', $path = 'w', $useHttps = false) {
     $this->urlDomain = $domain;
     $this->urlPath = $path;
+    $this->useHttps = $useHttps;
   }
 
   public function download(Article $article) /* boolean */ {
     $titleConverter = new MediawikiTitleConverter();
     $urlTitle = $titleConverter->convertedText($article->getTitle());
 
-    $url = 'http://' . $this->urlDomain . '/' . $this->urlPath . "/api.php?format=php&action=query&titles=$urlTitle&prop=categories";
+    $url = ($this->useHttps ? 'https': 'http') . '://' . $this->urlDomain . '/' . $this->urlPath . "/api.php?format=php&action=query&titles=$urlTitle&prop=categories";
 
     // Download with CURL
     $ch = curl_init();
@@ -36,7 +38,7 @@ class MediawikiQueryCategoryDownloader extends Downloader {
     curl_setopt($ch, CURLOPT_HEADER, 0);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
     curl_setopt($ch, CURLOPT_BINARYTRANSFER, 1);
-    curl_setopt($ch, CURLOPT_USERAGENT, 'MediawikiQueryCategoryDownloader (German Wikinews RSS feed; +http://de.wikinews.org/wiki/Benutzer:Dapete/RSS)');
+    curl_setopt($ch, CURLOPT_USERAGENT, 'MediawikiQueryCategoryDownloader (German Wikinews RSS feed; +https://de.wikinews.org/wiki/Benutzer:Dapete/RSS)');
     $data = curl_exec($ch);
     curl_close($ch);
 

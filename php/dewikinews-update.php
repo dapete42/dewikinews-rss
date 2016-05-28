@@ -8,7 +8,7 @@ include_once('classes/MediawikiQueryCategoryDownloader.php');
 include_once('classes/MediawikiTextDownloader.php');
 include_once('classes/MySQLDatabase.php');
 
-$multi = new MediawikiQueryCategoryMultiDownloader('de.wikinews.org');
+$multi = new MediawikiQueryCategoryMultiDownloader('de.wikinews.org', 'w', true);
 
 $articlesNew = $multi->download(50, 'Veröffentlicht');
 
@@ -22,8 +22,8 @@ if (!$db->connect()) {
 
 $articlesOld = $adb->loadArticles();
 
-$dlText = new MediawikiTextDownloader('de.wikinews.org');
-$dlCat = new MediawikiQueryCategoryDownloader('de.wikinews.org');
+$dlText = new MediawikiTextDownloader('de.wikinews.org', 'w', 'index.php', true);
+$dlCat = new MediawikiQueryCategoryDownloader('de.wikinews.org', 'w', true);
 
 $articlesDelete = array();
 $articlesSave = array();

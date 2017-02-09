@@ -2,8 +2,8 @@
 
 // Database configuration for general RSS feed
 $dbHost = 'tools-db';
-$dbUsername = 'NOT INCLUDED HERE';
-$dbPassword = 'NOT INCLUDED HERE';
+$dbUsername = 's51177';
+$dbPassword = 'xeashaebapagalaf';
 $dbDatabase = $dbUsername . '__dewikinews_rss';
 
 // Database configuration for direct DB access, which is needed for category

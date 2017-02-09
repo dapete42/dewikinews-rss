@@ -53,7 +53,7 @@ class Article {
     else {
       $this->published = new Timestamp("19700101000000");
     }
-    $hiss->categories = $categories;
+    $this->categories = $categories;
   }
 
   public function getText() {

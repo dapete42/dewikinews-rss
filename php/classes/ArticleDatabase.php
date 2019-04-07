@@ -51,7 +51,7 @@ class ArticleDatabase {
 
         $article = new Article($row['title'], $row['text'], $row['id'], $row['revid'], new Timestamp($row['touched']), new Timestamp($row['published']), $categories);
         $articles[$row['id']] = $article;
-	mysql_free_result($qcat);
+	mysqli_free_result($qcat);
       }
     }
 

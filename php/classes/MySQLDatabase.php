@@ -15,21 +15,21 @@ include_once('Database.php');
 class MySQLDatabase extends Database {
 
   protected function connectBase() {
-    $this->dbResource = mysql_connect($this->dbHost, $this->dbUsername, $this->dbPassword);
+    $this->dbResource = mysqli_connect($this->dbHost, $this->dbUsername, $this->dbPassword);
     if ($this->dbResource) {
-      mysql_select_db($this->database, $this->dbResource);
+      mysqli_select_db($this->dbResource, $this->database);
     }
   }
 
   protected function disconnectBase() {
     if ($this->dbResource) {
-      mysql_close($this->dbResource);
+      mysqli_close($this->dbResource);
     }
   }
 
   public function query ($sql = '') {
     if ($this->connected) {
-      return mysql_query($sql, $this->dbResource);
+      return mysqli_query($this->dbResource, $sql);
     }
     else {
       return false;
@@ -38,7 +38,7 @@ class MySQLDatabase extends Database {
 
   public function fetch_array($result) {
     if ($this->connected) {
-      return mysql_fetch_array($result);
+      return mysqli_fetch_array($result);
     }
     else {
       return false;

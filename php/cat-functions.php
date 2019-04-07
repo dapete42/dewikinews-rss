@@ -20,7 +20,7 @@ function get_cat()
 
 function db_select($db)
 {
-  @mysql_select_db($db) or die( "Unable to select database: $db");
+  mysqli::select_db($db) or die( "Unable to select database: $db");
 }
 
 // db_to_wiki

@@ -34,10 +34,10 @@ $channel['link'] = 'http://de.wikinews.org/wiki/Benutzer:Dapete/RSS';
 $channel['pubDate'] = strftime("%a, %d %b %Y %H:%M:%S %z");
 
 // Open database
-@mysql_pconnect($dbHostDewikinews,$dbUsername,$dbPassword) or die ("Unable to connect to mysql server: $dbUsername@$dbHostDewikinews");
+@mysqli_connect($dbHostDewikinews,$dbUsername,$dbPassword) or die ("Unable to connect to mysql server: $dbUsername@$dbHostDewikinews");
 db_select ($dbDatabaseDewikinews);
 
-$result = mysql_query('SELECT /* LIMIT:60 NM */ page_id, page_title, page_touched, cl2.cl_timestamp FROM categorylinks cl1 INNER JOIN page ON cl1.cl_from=page_id INNER JOIN categorylinks cl2 ON cl2.cl_from=page_id WHERE cl2.cl_to="Veröffentlicht" AND cl1.cl_to="' . mysql_real_escape_string($cat) . '" AND page_namespace=0 ORDER BY cl_timestamp DESC LIMIT 100;');
+$result = mysqli::query('SELECT /* LIMIT:60 NM */ page_id, page_title, page_touched, cl2.cl_timestamp FROM categorylinks cl1 INNER JOIN page ON cl1.cl_from=page_id INNER JOIN categorylinks cl2 ON cl2.cl_from=page_id WHERE cl2.cl_to="Veröffentlicht" AND cl1.cl_to="' . mysql_real_escape_string($cat) . '" AND page_namespace=0 ORDER BY cl_timestamp DESC LIMIT 100;');
 
 if (! $result) {
   die ("Error looking up items.\n".mysql_error());

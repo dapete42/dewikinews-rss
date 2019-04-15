@@ -22,7 +22,7 @@ class DEWikinewsConverter extends Converter {
     $ret = preg_replace('/.*?, \d\d\.\d\d\.\d\d\d\d (–|-|&ndash;) /', '', $text);
 
     // Only keep the text up to the first heading
-    $split = split('==', $ret);
+    $split = explode('==', $ret);
     $ret = $split[0];
 
     // Convert to Text

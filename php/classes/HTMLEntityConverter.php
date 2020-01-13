@@ -33,14 +33,27 @@ class HTMLEntityConverter extends Converter {
     }
 
     //Decode decimal HTML entities
-    $string = preg_replace('/&#\d{2,5};/ue', "\$this->utf8_entity_decode('$0')", $string);
+    $string = preg_replace_callback(
+        '/&#\d{2,5};/u',
+        function ($matches) {
+            return HTMLEntityConverter::utf8_entity_decode($matches[0]);
+        },
+        $string
+    );
     //Decode hex HTML entities
-    $string = preg_replace('/&#x([a-fA-F0-7]{2,8});/ue', "\$this->utf8_entity_decode('&#'.hexdec('$1').';')", $string);
+    $string = preg_replace_callback(
+        '/&#x([a-fA-F0-7]{2,8});/u',
+        function ($matches) {
+            $ent = '$#' . $matches[1] . ';';
+            return HTMLEntityConverter::utf8_entity_decode($ent);
+        },
+        $string
+    );
 
     return $string;
   }
 
-  private function utf8_entity_decode($entity){
+  private static function utf8_entity_decode($entity){
     $convmap = array(0x0, 0x10000, 0, 0xfffff);
     return mb_decode_numericentity($entity, $convmap, 'UTF-8');
   }

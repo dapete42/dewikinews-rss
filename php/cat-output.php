@@ -41,7 +41,7 @@ function rss2_render ($channel, $items) {
   # Preamble
   echo "<?xml version=\"1.0\"?>\n";
   # This adds a stylesheet so the feed can be viewn directly in a browser.
-  echo '<?xml-stylesheet href="http://tools.wikimedia.de/~dapete/rss.css" type="text/css"?>';
+  echo '<?xml-stylesheet href="rss.css" type="text/css"?>';
   echo "<rss version=\"2.0\">\n";
   echo "<channel>\n";
 

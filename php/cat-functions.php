@@ -18,9 +18,9 @@ function get_cat()
   return $cat;
 }
 
-function db_select($db)
+function db_select($link, $db)
 {
-  mysqli::select_db($db) or die( "Unable to select database: $db");
+  $link->select_db($db) or die( "Unable to select database: $db");
 }
 
 // db_to_wiki

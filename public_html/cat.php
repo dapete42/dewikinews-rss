@@ -34,10 +34,10 @@ $channel['link'] = 'http://de.wikinews.org/wiki/Benutzer:Dapete/RSS';
 $channel['pubDate'] = strftime("%a, %d %b %Y %H:%M:%S %z");
 
 // Open database
-@mysqli_connect($dbHostDewikinews,$dbUsername,$dbPassword) or die ("Unable to connect to mysql server: $dbUsername@$dbHostDewikinews");
-db_select ($dbDatabaseDewikinews);
+$link = @mysqli_connect($dbHostDewikinews,$dbUsername,$dbPassword) or die ("Unable to connect to mysql server: $dbUsername@$dbHostDewikinews");
+db_select ($link, $dbDatabaseDewikinews);
 
-$result = mysqli::query('SELECT /* LIMIT:60 NM */ page_id, page_title, page_touched, cl2.cl_timestamp FROM categorylinks cl1 INNER JOIN page ON cl1.cl_from=page_id INNER JOIN categorylinks cl2 ON cl2.cl_from=page_id WHERE cl2.cl_to="Veröffentlicht" AND cl1.cl_to="' . mysql_real_escape_string($cat) . '" AND page_namespace=0 ORDER BY cl_timestamp DESC LIMIT 100;');
+$result = $link->query('SELECT /* LIMIT:60 NM */ page_id, page_title, page_touched, cl2.cl_timestamp FROM categorylinks cl1 INNER JOIN page ON cl1.cl_from=page_id INNER JOIN categorylinks cl2 ON cl2.cl_from=page_id WHERE cl2.cl_to="Veröffentlicht" AND cl1.cl_to="' . $link->real_escape_string($cat) . '" AND page_namespace=0 ORDER BY cl_timestamp DESC LIMIT 100;');
 
 if (! $result) {
   die ("Error looking up items.\n".mysql_error());
@@ -46,7 +46,7 @@ if (! $result) {
 $items = array();
 
 // Now cycle through all lines
-while ($row = mysql_fetch_array($result)) {
+while ($row = $result->fetch_array()) {
   // Item data
   $item = array();
   $item['guid'] = $row['page_id'];
@@ -58,6 +58,9 @@ while ($row = mysql_fetch_array($result)) {
 
   $items[$row['page_id']] = $item;
 }
+
+$result->close();
+$link->close();
 
 // Output result
   rss2_render($channel, $items);

@@ -1,2 +1,3 @@
-backend: gridengine
+backend: kubernetes
+type: php7.3
 canonical: True

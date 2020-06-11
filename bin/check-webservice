@@ -1,0 +1,7 @@
+#!/bin/bash
+
+FAILED=$( curl -s 'https://dewikinews-rss.toolforge.org/' | grep 'No webservice' -c )
+
+if [ $FAILED -gt 0 ]; then
+	webservice restart
+fi

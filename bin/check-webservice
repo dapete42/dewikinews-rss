@@ -1,7 +1,9 @@
 #!/bin/bash
 
-FAILED=$( curl -s 'https://dewikinews-rss.toolforge.org/' | grep 'No webservice' -c )
+FAILED=$( curl -s 'https://dewikinews-rss.toolforge.org/' | egrep 'No webservice|504 Gateway Time-out' -c )
 
 if [ $FAILED -gt 0 ]; then
-	webservice restart
+	webservice stop
+	sleep 1
+	webservice start
 fi

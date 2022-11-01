@@ -1,0 +1,6 @@
+PATH=/usr/local/bin:/usr/bin:/bin
+# migrated to toolforge-jobs
+#0 * * * * qsub $HOME/cron.sh >/dev/null
+
+# Restart webservice if not running
+*/5 * * * * jlocal $HOME/bin/check-webservice >logs/check-webservice.log

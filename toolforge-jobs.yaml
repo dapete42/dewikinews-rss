@@ -1,0 +1,9 @@
+# https://wikitech.wikimedia.org/wiki/Help:Toolforge/Jobs_framework
+---
+# Run hourly updates
+- name: dewikinews-rss-update
+  image: tf-php74
+  command: bin/dewikinews-rss-update
+  no-filelog: true
+  schedule: "57 * * * *"
+  emails: onfailure

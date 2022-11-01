@@ -1,0 +1,3 @@
+#!/bin/bash
+
+php /data/project/dewikinews-rss/php/dewikinews-update.php >> /data/project/dewikinews-rss/update.log 2>&1
